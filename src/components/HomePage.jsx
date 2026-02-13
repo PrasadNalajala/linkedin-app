@@ -19,7 +19,6 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
-import Chip from "@mui/material/Chip";
 
 export default function HomePage() {
   const [postText, setPostText] = React.useState("");
@@ -32,119 +31,62 @@ export default function HomePage() {
   };
 
   return (
-    <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
-      <Container maxWidth="lg" sx={{ py: 3 }}>
-        <Grid container spacing={2.5}>
+    <Container maxWidth="lg">
+      <Box sx={{ py: 4 }}>
+        <Grid container spacing={3}>
           {/* Left Sidebar */}
           <Grid item xs={12} md={3}>
-            <Paper elevation={0} sx={{ mb: 2, overflow: "hidden" }}>
-              {/* Profile Cover */}
-              <Box
-                sx={{
-                  height: 54,
-                  background: "radial-gradient( #667eea 30%, #764ba2 100%)",
-                }}
-              />
-              <Box sx={{ px: 2, pb: 2, mt: -4 }}>
+            <Paper>
+              <Box sx={{ p: 2 }}>
                 <Box display="flex" flexDirection="column" alignItems="center">
-                  <Avatar
-                    sx={{
-                      width: 72,
-                      height: 72,
-                      mb: 1,
-                      border: "2px solid white",
-                      bgcolor: "primary.main",
-                    }}
-                    alt="User Profile"
-                  >
-                    PS
-                  </Avatar>
-                  <Typography variant="h6" align="center" sx={{ fontWeight: 600 }}>
+                  <Avatar sx={{ width: 72, height: 72, mb: 2 }}>PS</Avatar>
+                  <Typography variant="h6" align="center">
                     Priyanka S
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    align="center"
-                    sx={{ mb: 2 }}
-                  >
+                  <Typography variant="body2" color="text.secondary" align="center">
                     Operations Manager at Instalanes
                   </Typography>
                 </Box>
-                <Divider sx={{ my: 1.5 }} />
+                <Divider sx={{ my: 2 }} />
                 <Box>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    sx={{
-                      py: 0.75,
-                      "&:hover": { bgcolor: "rgba(0,0,0,0.04)", cursor: "pointer" },
-                    }}
-                  >
+                  <Box display="flex" justifyContent="space-between" sx={{ mb: 1 }}>
                     <Typography variant="body2" color="text.secondary">
                       Profile viewers
                     </Typography>
-                    <Typography variant="body2" color="primary" fontWeight={600}>
+                    <Typography variant="body2" color="primary">
                       142
                     </Typography>
                   </Box>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    sx={{
-                      py: 0.75,
-                      "&:hover": { bgcolor: "rgba(0,0,0,0.04)", cursor: "pointer" },
-                    }}
-                  >
+                  <Box display="flex" justifyContent="space-between">
                     <Typography variant="body2" color="text.secondary">
                       Post impressions
                     </Typography>
-                    <Typography variant="body2" color="primary" fontWeight={600}>
+                    <Typography variant="body2" color="primary">
                       1,284
                     </Typography>
                   </Box>
                 </Box>
-                <Divider sx={{ my: 1.5 }} />
+                <Divider sx={{ my: 2 }} />
                 <Box>
-                  <Typography variant="body2" sx={{ mb: 1, fontWeight: 500 }}>
+                  <Typography variant="body2" gutterBottom>
                     Access exclusive tools & insights
                   </Typography>
-                  <Button
-                    variant="text"
-                    size="small"
-                    fullWidth
-                    sx={{
-                      justifyContent: "flex-start",
-                      color: "text.primary",
-                      fontWeight: 600,
-                      "&:hover": { bgcolor: "rgba(0,0,0,0.04)" },
-                    }}
-                  >
-                    🟡 Try Premium for free
+                  <Button variant="outlined" size="small" fullWidth>
+                    Try Premium
                   </Button>
                 </Box>
               </Box>
             </Paper>
 
-            <Paper elevation={0} sx={{ p: 2 }}>
-              <Typography variant="subtitle2" gutterBottom color="primary">
+            <Paper sx={{ mt: 2, p: 2 }}>
+              <Typography variant="subtitle1" gutterBottom>
                 Recent
               </Typography>
-              <List dense disablePadding>
+              <List dense>
                 {["React Developers", "JavaScript Community", "Web Development"].map(
                   (item, idx) => (
-                    <ListItem
-                      key={idx}
-                      button
-                      sx={{
-                        px: 0,
-                        py: 0.5,
-                        "&:hover": { bgcolor: "rgba(0,0,0,0.04)" },
-                      }}
-                    >
-                      <Typography variant="body2" fontWeight={500}>
-                        # {item}
-                      </Typography>
+                    <ListItem key={idx} button>
+                      <ListItemText primary={`# ${item}`} />
                     </ListItem>
                   )
                 )}
@@ -155,65 +97,35 @@ export default function HomePage() {
           {/* Center Feed */}
           <Grid item xs={12} md={6}>
             {/* Post Composer */}
-            <Card elevation={0} sx={{ mb: 2 }}>
+            <Card>
               <CardContent>
-                <Box display="flex" gap={1.5}>
-                  <Avatar sx={{ bgcolor: "primary.main" }}>PS</Avatar>
+                <Box display="flex" gap={2}>
+                  <Avatar>PS</Avatar>
                   <TextField
                     placeholder="Start a post"
                     fullWidth
                     multiline
-                    rows={1}
+                    rows={3}
                     value={postText}
                     onChange={(e) => setPostText(e.target.value)}
                     variant="outlined"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        borderRadius: 25,
-                        bgcolor: "background.default",
-                        "&:hover": {
-                          bgcolor: "rgba(0,0,0,0.03)",
-                        },
-                        "&.Mui-focused": {
-                          bgcolor: "background.paper",
-                        },
-                      },
-                    }}
                   />
                 </Box>
               </CardContent>
               <Divider />
-              <CardActions sx={{ px: 2, py: 1 }}>
-                <Stack direction="row" spacing={0.5} sx={{ flex: 1 }}>
-                  <Button
-                    size="small"
-                    sx={{ color: "text.secondary", fontWeight: 600 }}
-                  >
-                    📷 Photo
-                  </Button>
-                  <Button
-                    size="small"
-                    sx={{ color: "text.secondary", fontWeight: 600 }}
-                  >
-                    🎥 Video
-                  </Button>
-                  <Button
-                    size="small"
-                    sx={{ color: "text.secondary", fontWeight: 600 }}
-                  >
-                    📅 Event
-                  </Button>
-                  <Button
-                    size="small"
-                    sx={{ color: "text.secondary", fontWeight: 600 }}
-                  >
-                    📝 Article
-                  </Button>
-                </Stack>
+              <CardActions>
+                <Button size="small">📷 Photo</Button>
+                <Button size="small">🎥 Video</Button>
+                <Button size="small">📅 Event</Button>
+                <Button size="small">📝 Article</Button>
+                <Box sx={{ flexGrow: 1 }} />
+                <Button variant="contained" onClick={handlePost} disabled={!postText.trim()}>
+                  Post
+                </Button>
               </CardActions>
             </Card>
 
-            <Divider sx={{ my: 1 }}>
+            <Divider sx={{ my: 2 }}>
               <Typography variant="caption" color="text.secondary">
                 Sort by: Top
               </Typography>
@@ -223,11 +135,11 @@ export default function HomePage() {
             {[
               {
                 name: "Prasad Nallajala",
-                role: "MERN Stack Developer • Freelancer",
+                role: "MERN Stack Developer",
                 time: "1h",
                 content:
-                  "Excited to share that I’ve officially started my journey as a Freelance MERN Stack Developer! 🚀\n\nLooking forward to building scalable SaaS platforms, crafting responsive user interfaces with Next.js & MUI, and collaborating with talented teams across the globe.\n\nGrateful for the opportunity and excited for what’s ahead!",
-                hashtags: "#freelance #mernstack #nextjs #saas #webdevelopment",
+                  "Excited to share that I've officially started my journey as a Freelance MERN Stack Developer! 🚀 Looking forward to building scalable SaaS platforms and collaborating with talented teams.",
+                hashtags: "#freelance #mernstack #nextjs",
                 likes: 32,
                 comments: 6,
               },
@@ -236,8 +148,8 @@ export default function HomePage() {
                 role: "Product Manager",
                 time: "2h",
                 content:
-                  "Excited to share that our team just launched a new feature that will help millions of users connect better. It's been an amazing journey working with such talented people!",
-                hashtags: "#productlaunch #teamwork #innovation",
+                  "Excited to share that our team just launched a new feature that will help millions of users connect better!",
+                hashtags: "#productlaunch #teamwork",
                 likes: 124,
                 comments: 18,
               },
@@ -246,90 +158,49 @@ export default function HomePage() {
                 role: "Senior Developer",
                 time: "5h",
                 content:
-                  "Just published a new article on clean code principles and best practices for React applications. Check it out!",
-                hashtags: "#react #cleancode #webdev",
+                  "Just published a new article on clean code principles and best practices for React applications.",
+                hashtags: "#react #cleancode",
                 likes: 89,
                 comments: 12,
               },
-              {
-                name: "Sarah Chen",
-                role: "UX Designer",
-                time: "1d",
-                content:
-                  "Design thinking workshop was incredible! Learned so much about user-centered design and accessibility. Can't wait to apply these insights to our next project.",
-                hashtags: "#ux #design #accessibility",
-                likes: 156,
-                comments: 24,
-              },
             ].map((post, idx) => (
-              <Card key={idx} elevation={0} sx={{ mb: 2 }}>
+              <Card key={idx} sx={{ mb: 2 }}>
                 <CardHeader
-                  avatar={
-                    <Avatar sx={{ bgcolor: "secondary.main" }}>
-                      {post.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </Avatar>
-                  }
+                  avatar={<Avatar>{post.name.split(" ").map((n) => n[0]).join("")}</Avatar>}
                   action={
-                    <IconButton size="small">
-                      <Typography variant="h6">⋯</Typography>
+                    <IconButton>
+                      <Typography>•••</Typography>
                     </IconButton>
                   }
-                  title={
-                    <Typography variant="subtitle2" fontWeight={600}>
-                      {post.name}
-                    </Typography>
-                  }
-                  subheader={
-                    <Typography variant="caption" color="text.secondary">
-                      {post.role} • {post.time}
-                    </Typography>
-                  }
+                  title={post.name}
+                  subheader={`${post.role} • ${post.time}`}
                 />
-                <CardContent sx={{ pt: 0 }}>
+                <CardContent>
                   <Typography variant="body1" paragraph>
                     {post.content}
                   </Typography>
-                  <Typography variant="body2" color="primary" fontWeight={500}>
+                  <Typography variant="body2" color="primary">
                     {post.hashtags}
                   </Typography>
                 </CardContent>
                 <Divider />
-                <Box sx={{ px: 2, py: 0.5 }}>
+                <Box sx={{ px: 2, py: 1 }}>
                   <Typography variant="caption" color="text.secondary">
                     👍 {post.likes} • {post.comments} comments
                   </Typography>
                 </Box>
                 <Divider />
-                <CardActions sx={{ px: 1, py: 0.5 }}>
-                  <Button
-                    size="small"
-                    fullWidth
-                    sx={{ color: "text.secondary", fontWeight: 600 }}
-                  >
+                <CardActions>
+                  <Button size="small" fullWidth>
                     👍 Like
                   </Button>
-                  <Button
-                    size="small"
-                    fullWidth
-                    sx={{ color: "text.secondary", fontWeight: 600 }}
-                  >
+                  <Button size="small" fullWidth>
                     💬 Comment
                   </Button>
-                  <Button
-                    size="small"
-                    fullWidth
-                    sx={{ color: "text.secondary", fontWeight: 600 }}
-                  >
+                  <Button size="small" fullWidth>
                     🔁 Repost
                   </Button>
-                  <Button
-                    size="small"
-                    fullWidth
-                    sx={{ color: "text.secondary", fontWeight: 600 }}
-                  >
+                  <Button size="small" fullWidth>
                     📤 Send
                   </Button>
                 </CardActions>
@@ -339,136 +210,70 @@ export default function HomePage() {
 
           {/* Right Sidebar */}
           <Grid item xs={12} md={3}>
-            <Paper elevation={0} sx={{ p: 2, mb: 2 }}>
-              <Typography variant="subtitle2" gutterBottom fontWeight={600}>
+            <Paper sx={{ p: 2 }}>
+              <Typography variant="subtitle1" gutterBottom>
                 Add to your feed
               </Typography>
-              <List disablePadding>
+              <List>
                 {[
-                  { name: "Sarah Williams", role: "UX Designer", initials: "SW" },
-                  { name: "David Chen", role: "Tech Lead", initials: "DC" },
-                  { name: "Emily Davis", role: "Data Scientist", initials: "ED" },
+                  { name: "Sarah Williams", role: "UX Designer" },
+                  { name: "David Chen", role: "Tech Lead" },
+                  { name: "Emily Davis", role: "Data Scientist" },
                 ].map((person, index) => (
-                  <ListItem key={index} sx={{ px: 0, py: 1.5 }}>
+                  <ListItem key={index}>
                     <ListItemAvatar>
-                      <Avatar
-                        sx={{
-                          width: 48,
-                          height: 48,
-                          bgcolor: "secondary.light",
-                          color: "text.primary",
-                        }}
-                      >
-                        {person.initials}
-                      </Avatar>
+                      <Avatar>{person.name.split(" ").map((n) => n[0]).join("")}</Avatar>
                     </ListItemAvatar>
-                    <ListItemText
-                      primary={
-                        <Typography variant="body2" fontWeight={600}>
-                          {person.name}
-                        </Typography>
-                      }
-                      secondary={
-                        <Typography variant="caption" color="text.secondary">
-                          {person.role}
-                        </Typography>
-                      }
-                    />
-                    <Button
-                      variant="outlined"
-                      size="small"
-                      sx={{ ml: 1, minWidth: 80 }}
-                    >
+                    <ListItemText primary={person.name} secondary={person.role} />
+                    <Button variant="outlined" size="small">
                       Follow
                     </Button>
                   </ListItem>
                 ))}
               </List>
-              <Button
-                size="small"
-                fullWidth
-                sx={{
-                  mt: 1,
-                  color: "text.secondary",
-                  fontWeight: 600,
-                  "&:hover": { bgcolor: "rgba(0,0,0,0.04)" },
-                }}
-              >
-                View all recommendations →
+              <Button size="small" fullWidth>
+                View all recommendations
               </Button>
             </Paper>
 
-            <Paper elevation={0} sx={{ p: 2, mb: 2 }}>
-              <Typography variant="subtitle2" gutterBottom fontWeight={600}>
+            <Paper sx={{ p: 2, mt: 2 }}>
+              <Typography variant="subtitle1" gutterBottom>
                 Today's top courses
               </Typography>
-              <List dense disablePadding>
+              <List dense>
                 {[
                   { title: "React Advanced Patterns", level: "Advanced", time: "2.5 hrs" },
                   { title: "System Design Fundamentals", level: "Intermediate", time: "4 hrs" },
                   { title: "Leadership Skills", level: "Beginner", time: "1.5 hrs" },
                 ].map((course, idx) => (
-                  <ListItem
-                    key={idx}
-                    sx={{
-                      px: 0,
-                      py: 1.5,
-                      "&:hover": { bgcolor: "rgba(0,0,0,0.02)", cursor: "pointer" },
-                    }}
-                  >
+                  <ListItem key={idx}>
                     <ListItemText
-                      primary={
-                        <Typography variant="body2" fontWeight={600}>
-                          {course.title}
-                        </Typography>
-                      }
-                      secondary={
-                        <Typography variant="caption" color="text.secondary">
-                          {course.level} • {course.time}
-                        </Typography>
-                      }
+                      primary={course.title}
+                      secondary={`${course.level} • ${course.time}`}
                     />
                   </ListItem>
                 ))}
               </List>
-              <Button
-                size="small"
-                fullWidth
-                sx={{
-                  mt: 1,
-                  color: "text.secondary",
-                  fontWeight: 600,
-                  "&:hover": { bgcolor: "rgba(0,0,0,0.04)" },
-                }}
-              >
-                Show more →
+              <Button size="small" fullWidth>
+                Show more
               </Button>
             </Paper>
 
-            <Paper elevation={0} sx={{ p: 2 }}>
-              <Typography variant="subtitle2" gutterBottom fontWeight={600}>
+            <Paper sx={{ p: 2, mt: 2 }}>
+              <Typography variant="subtitle1" gutterBottom>
                 Trending now
               </Typography>
-              <Stack spacing={2} sx={{ mt: 2 }}>
+              <Stack spacing={2}>
                 {[
                   { category: "Technology", topic: "AI and Machine Learning", posts: "12,547" },
                   { category: "Careers", topic: "Remote Work Culture", posts: "8,234" },
                   { category: "Development", topic: "React 19 Features", posts: "5,891" },
                 ].map((trend, idx) => (
-                  <Box
-                    key={idx}
-                    sx={{
-                      "&:hover": { bgcolor: "rgba(0,0,0,0.02)", cursor: "pointer" },
-                      p: 1,
-                      borderRadius: 1,
-                    }}
-                  >
+                  <Box key={idx}>
                     <Typography variant="caption" color="text.secondary">
                       Trending in {trend.category}
                     </Typography>
-                    <Typography variant="body2" fontWeight={600}>
-                      {trend.topic}
-                    </Typography>
+                    <Typography variant="body2">{trend.topic}</Typography>
                     <Typography variant="caption" color="text.secondary">
                       {trend.posts} posts
                     </Typography>
@@ -478,7 +283,7 @@ export default function HomePage() {
             </Paper>
           </Grid>
         </Grid>
-      </Container>
-    </Box>
+      </Box>
+    </Container>
   );
 }
