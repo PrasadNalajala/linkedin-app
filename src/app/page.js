@@ -1,66 +1,35 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import HomePage from "../components/HomePage";
+
+export const metadata = {
+  title: "LinkedIn",
+  description: "A modern LinkedIn-inspired social feed built with Next.js and Material UI.",
+  openGraph: {
+    title: "LinkedIn",
+    description: "A modern LinkedIn-inspired social feed built with Next.js and Material UI.",
+    url: "https://yourdomain.com/",
+    siteName: "LinkedIn Clone",
+    images: [
+      {
+        url: "https://yourdomain.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "LinkedIn"
+      }
+    ],
+    locale: "en_US",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LinkedIn",
+    description: "A modern LinkedIn-inspired social feed built with Next.js and Material UI.",
+    images: ["https://yourdomain.com/og-image.png"]
+  },
+  alternates: {
+    canonical: "https://yourdomain.com/",
+  }
+};
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <HomePage />;
 }
