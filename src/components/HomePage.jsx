@@ -68,7 +68,7 @@ export default function HomePage() {
                     align="center"
                     sx={{ mb: 2 }}
                   >
-                    Software Engineer at Tech Corp
+                    Operations Manager at Instalanes
                   </Typography>
                 </Box>
                 <Divider sx={{ my: 1.5 }} />
